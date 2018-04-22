@@ -1,0 +1,22 @@
+{% extends "base.html" %}
+
+{% block content %}
+
+{% if title_entry|length == 0 or blogs_entry|length == 0 %}
+<p>No blog post</p>
+{% else %}
+
+    <p>
+        {% for formName in title_entry %}
+        {{formName.title}}
+   <br>
+
+        {% for blogformname in blogs_entry %}
+        {{blogformname.body}}
+        </p>
+        {% endfor %}
+        {% endfor %}
+    
+
+{% endif %}
+{% endblock %}
