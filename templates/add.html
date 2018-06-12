@@ -1,0 +1,39 @@
+{% extends "base.html" %}
+
+{% block content %}
+
+    <h1>Build A Blog</h1>
+
+    <form method= 'post' id =blogs >
+        <label>Title<br>
+   <input type="text" name="title" id= blogs>
+        </label>
+   <br>
+   <label>
+       Blog Body<br>
+      <textarea name="body" id = blogs></textarea><br>
+      <input type="submit">
+    </label>
+    </form>
+      
+
+
+
+    
+    <hr />
+ 
+
+    {% if title|length == 0%}
+    <p>No posts yet</p>
+    {% else %}
+    
+            {% for blog in blogs %}
+            <li>{{blog.title}}
+            </li>
+            {% endfor %}
+       
+        {% endif %}
+    
+    {% endblock %}
+
+
