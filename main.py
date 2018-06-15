@@ -44,19 +44,19 @@ def require_login():
 
 
 @app.route("/",methods=['POST','GET'])
-def input():
+def index():
     owner = User.query.filter_by(email=session['email']).first()
-
     if request.method == 'POST':
         blog_title= request.form['title']
         blog_body = request.form['body']
         new_blog = Blog(blog_title,blog_body, owner)
         db.session.add(new_blog)
         db.session.commit()
-
+    
     blogs = Blog.query.filter_by(owner=owner).all()
     return render_template('add.html',title='Build A Blog',blogs=blogs)
 
+    
 
 
 @app.route('/register', methods=['POST', 'GET'])
@@ -103,13 +103,31 @@ def logout():
 
 
 
+@app.route('/blog',methods =['GET'])
+def blog():
+    #TODO display all blog post
+    blogs = Blog.query.all()
+    return render_template('allPosts.html',blogs=blogs)
+
+@app.route('/newpost',methods= ['GET','POST'])
+def newpost():
+   
+    if request.method == 'POST':
+         blogs = Blog.query.first()
+         return render_template('newpost')
+    id = request.args.get('id','')
+    blogs = Blog.query.get(id)
+    return render_template('newpost.html',blogs=blogs)
+    
 
 
 
 
 
+#if id == '':
+#     id = request.args.get('id','')
 
-
+       # blogs = Blog.query.order_by(Blog.id.desc()).all()
 
 
 

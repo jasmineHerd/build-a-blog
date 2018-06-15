@@ -4,7 +4,7 @@
 
     <h1>Build A Blog</h1>
 
-    <form method= 'post' id =blogs >
+    <form  action='/newpost',method= 'post' id =blogs >
         <label>Title<br>
    <input type="text" name="title" id= blogs>
         </label>
@@ -21,7 +21,7 @@
 
     
     <hr />
- 
+ <!--
 
     {% if title|length == 0%}
     <p>No posts yet</p>
@@ -33,7 +33,7 @@
             {% endfor %}
        
         {% endif %}
-    
+        -->
     {% endblock %}
 
 
