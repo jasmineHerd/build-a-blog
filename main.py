@@ -109,12 +109,11 @@ def blog():
     blogs = Blog.query.all()
     return render_template('allPosts.html',blogs=blogs)
 
-@app.route('/newpost',methods= ['GET','POST'])
+@app.route('/newpost', methods=['POST', 'GET'])
 def newpost():
-   
-    if request.method == 'POST':
-         blogs = Blog.query.first()
-         return render_template('newpost')
+   #if request.method == 'POST':
+       #blogs 
+
     id = request.args.get('id','')
     blogs = Blog.query.get(id)
     return render_template('newpost.html',blogs=blogs)
